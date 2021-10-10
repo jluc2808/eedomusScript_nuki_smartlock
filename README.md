@@ -2,17 +2,19 @@
 
 ![Nuki Logo](./dist/img/nikya_nukismartlock.png "Logo Nuki smartlock by Nikya")
 
-* Plugin version : 1.3
+* Plugin version : 1.4
 * Origine : [GitHub/Nikya/nuki_smartlock](https://github.com/Nikya/eedomusScript_nuki_smartlock "Origine sur GitHub")
+* Modifié (Fork) : [GitHub/jluc2808/nuki_smartlock](https://github.com/jluc2808/eedomusScript_nuki_smartlock "Origine sur GitHub")
 * Nuki Bridge HTTP-API : 1.6 ([API documentation](https://nuki.io/fr/api/))
 
 ## Description
 ***Nikya eedomus Script Nuki Smartlock*** est un plugin pour la box domotique eedomus, qui permet de piloter et connaitre l'état d'une serrure intelligent _Nuki_.
 
-Ce plugin est composé d'un script PHP et d'une déclaration pour 3 périphériques :
+Ce plugin est composé d'un script PHP et d'une déclaration pour 4 périphériques :
 - Commande d'ouverture/fermeture
 - État de la serrure
-- Indicateur de batterie faible
+- Indicateur de % batterie (modifié)
+- État de la porte (ajout)
 
 Son avantage principal est de mettre à jour l'état de la serrure, seulement si nécessaire, en utilisant la fonctionnalité _callback_ de l'API Nuki. (au lieu de créer des _polling_ côté eedomus)
 
@@ -34,9 +36,9 @@ Puis noter les **codeAPI** des périphériques créés. (A utiliser à l'étape 
 
 ## Installation manuelle
 
-1. Télécharger le projet sur GitHub : [GitHub/Nikya/nuki_smartlock](https://github.com/Nikya/eedomusScript_nuki_smartlock "Origine sur GitHub")
+1. Télécharger le projet sur GitHub : [GitHub/jluc2808/nuki_smartlock](https://github.com/jluc2808/eedomusScript_nuki_smartlock "Origine sur GitHub")
 1. Uploader le fichier `dist/nukismartlock.php` sur la box ([Doc eedomus script](http://doc.eedomus.com/view/Scripts#Script_HTTP_sur_la_box_eedomus))
-2. Créer manuellement les 3 périphériques et noter leur **codeAPI** (A utiliser à l'étape _register_)
+2. Créer manuellement les 4 périphériques et noter leur **codeAPI** (A utiliser à l'étape _register_)
 
 ### Paramétrage
 
@@ -79,10 +81,10 @@ Abonner la box eedomus en tant que _Callback_ souhaitant être informé des chan
 	- eedomushost : IP de votre eedomus qu'appelera le bridge Nuki (Na pas mettre localhost !)
 	- nukiid : Id du Nuki (Voir _fonction list_)
 	- periph_id_state : **codeAPI** eedomus du périphérique qui contiendra l'information _ETAT_ de la serrure
-	- periph_id_batterycritical : **codeAPI** eedomus du périphérique qui contiendra l'information _Batterie faible_ de la serrure
+	- periph_id_batterycritical : **codeAPI** eedomus du périphérique qui contiendra l'information % _Batterie de la serrure
 * Résultat
 	- (XML) Une confirmation ou non du succès de la fonction
-* Exemple : https://192.168.1.60/script/?exec=nukismartlock.php&function=register&eedomushost=192.168.1.60&nukiid=111&periph_id_state=222&periph_id_batterycritical=333
+* Exemple : https://192.168.1.60/script/?exec=nukismartlock.php&function=register&eedomushost=192.168.1.60&nukiid=111&periph_id_state=222&periph_id_batterycritical=333&periph_id_doorstate=444
 
 #### Fonction _list_
 
