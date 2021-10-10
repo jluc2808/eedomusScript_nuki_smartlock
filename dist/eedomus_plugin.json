@@ -3,10 +3,10 @@
     "name_fr": "Nuki serrure intelligente",
     "name_en": "Nuki smartlock",
     "icon": "nikya_nukismartlock.png",
-    "version": "1.3",
+    "version": "1.4",
     "creation_date": "2017-12-10",
-    "modification_date": "2018-03-11",
-    "author": "<a href='https://github.com/Nikya' target='_blank'>Nikya</a>",
+    "modification_date": "2021-10-10",
+    "author": "<a href='https://github.com/jluc2808' target='_blank'>jluc2808</a>",
     "description_fr": "Piloter et connaitre l'état d'une serrure intelligent <em>Nuki</em>",
     "description_en": "Operating and know the state of a smart lock <em>Nuki</em>",
     "forum_link": "http://forum.eedomus.com/viewtopic.php?f=50&t=6273",
@@ -182,20 +182,18 @@
             "icon": "nikya_nukismartlock.png",
             "utilisation_id": "35",
             "parameters": {
-                "value_type": "list"
+                "value_type": "Number"
             },
-            "values": [
-                {
-                    "value": "0",
-                    "description": "Bon",
-                    "icon": "nikya_nukismartlock.png"
-                },
-                {
-                    "value": "100",
-                    "description": "Critique",
-                    "icon": "nikya_nukismartlock.png"
-                }
-            ]
+		{
+            "device_id": "periph_doorstate",
+            "parent_id": "nuki_action",
+            "module_id": "11",
+            "name_fr": "Nuki Smartlock - Etat porte",
+            "icon": "nikya_nukismartlock.png",
+            "utilisation_id": "35",
+            "parameters": {
+                "value_type": "Number"
+            },
         }
     ]
 }
