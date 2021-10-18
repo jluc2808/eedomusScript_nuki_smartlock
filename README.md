@@ -2,7 +2,7 @@
 
 ![Nuki Logo](./dist/img/nikya_nukismartlock.png "Logo Nuki smartlock by Nikya")
 
-* Plugin version : 1.4
+* Plugin version : 1.5
 * Origine : [GitHub/Nikya/nuki_smartlock](https://github.com/Nikya/eedomusScript_nuki_smartlock "Origine sur GitHub")
 * Modifié (Fork) : [GitHub/jluc2808/nuki_smartlock](https://github.com/jluc2808/eedomusScript_nuki_smartlock "Origine sur GitHub")
 * Nuki Bridge HTTP-API : 1.6 ([API documentation](https://nuki.io/fr/api/))
@@ -17,7 +17,7 @@ Ce plugin est composé d'un script PHP et d'une déclaration pour 4 périphériq
 - État de la porte (ajout)
 
 Son avantage principal est de mettre à jour l'état de la serrure, seulement si nécessaire, en utilisant la fonctionnalité _callback_ de l'API Nuki. (au lieu de créer des _polling_ côté eedomus)
-
+Le script va aussi synchroniser l'action (verrouiller, déverrouiller, ...) sur la serrure, quelque soit le dispositif utilisé y compris si celui-ci n'est pas eedomus.
 
 ## Prérequis
 
@@ -82,9 +82,24 @@ Abonner la box eedomus en tant que _Callback_ souhaitant être informé des chan
 	- nukiid : Id du Nuki (Voir _fonction list_)
 	- periph_id_state : **codeAPI** eedomus du périphérique qui contiendra l'information _ETAT_ de la serrure
 	- periph_id_batterycritical : **codeAPI** eedomus du périphérique qui contiendra l'information % _Batterie de la serrure
+	- periph_id_doorstate : **codeAPI** eedomus du périphérique qui contiendra l'information _ETAT de la porte
+	- periph_id_lockaction : **codeAPI** eedomus du périphérique qui contiendra l'information _ACTION de la serrure
 * Résultat
 	- (XML) Une confirmation ou non du succès de la fonction
-* Exemple : https://192.168.1.60/script/?exec=nukismartlock.php&function=register&eedomushost=192.168.1.60&nukiid=111&periph_id_state=222&periph_id_batterycritical=333&periph_id_doorstate=444
+* Exemple : https://192.168.1.60/script/?exec=nukismartlock.php&function=register&eedomushost=192.168.1.60&nukiid=111&periph_id_state=222&periph_id_batterycritical=333&periph_id_doorstate=444&periph_id_batterycritical=333&periph_id_lockaction=555
+
+#### Fonction _add_periph_registration_
+
+Enregistrer un périphérique pour gérer les changements d'état de la serrure et de la porte.
+
+* params
+	- function : `add_periph_registration`
+	- nukiid : Id du Nuki (Voir _fonction list_)
+	- periph_type : contiendra le type du périphérique à ajouter _TYPE_ (valeur possible: state, door, action, battery)
+	- periph_id : **codeAPI** eedomus du périphérique que l'on veut ajouter 
+* Résultat
+	- (XML) Une confirmation ou non du succès de la fonction
+* Exemple : https://192.168.1.60/script/?exec=nukismartlock.php&function=register&eedomushost=192.168.1.60&nukiid=111&periph_type=action&periph_id=555
 
 #### Fonction _list_
 
@@ -121,7 +136,7 @@ Supprimer un callback enregistré sur le Bridge Nuki.
 #### Fonction _incomingcall_
 
 Fonction coeur de ce script, c'est cette fonction qu'appellera le bridge Nuki à chaque changement d'état d'une serrure.  
-Elle lis les informations reçues et met à jour les périphériques concernés avec les nouvelles valeurs.  
+Elle lit les informations reçues et met à jour les périphériques concernés avec les nouvelles valeurs.  
 Inutile de l'appeler manuellement, mais un appel permet de savoir si l'ensemble est correctement configuré et opérationnel.
 
 * params :
