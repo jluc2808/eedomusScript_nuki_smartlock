@@ -181,19 +181,62 @@
             "name_fr": "Nuki Smartlock - Etat batterie",
             "icon": "nikya_nukismartlock.png",
             "utilisation_id": "35",
+	    "value_unit": "%",
             "parameters": {
-                "value_type": "Number"
-            },
-		{
-            "device_id": "periph_doorstate",
+                "value_type": "float"
+	},
+	{
+            "device_id": "nuki_doorstate",
             "parent_id": "nuki_action",
             "module_id": "11",
             "name_fr": "Nuki Smartlock - Etat porte",
             "icon": "nikya_nukismartlock.png",
             "utilisation_id": "35",
             "parameters": {
-                "value_type": "Number"
+                "value_type": "list"
             },
+	    "values": [
+                {
+                    "value": "1",
+                    "description": "Désactivé",
+                    "icon": "nikya_nukismartlock.png"
+                },
+                {
+                    "value": "2",
+                    "description": "Porte fermée",
+                    "icon": "nikya_nukismartlock.png"
+                },
+                {
+                    "value": "3",
+                    "description": "Porte ouverte",
+                    "icon": "nikya_nukismartlock.png"
+                },
+                {
+                    "value": "4",
+                    "description": "Etat inconnu",
+                    "icon": "nikya_nukismartlock.png"
+                },
+                {
+                    "value": "5",
+                    "description": "Etalonnage en cours",
+                    "icon": "nikya_nukismartlock.png"
+                },
+                {
+                    "value": "16",
+                    "description": "Non étalonné",
+                    "icon": "nikya_nukismartlock.png"
+                },
+                {
+                    "value": "240",
+                    "description": "Supprimé",
+                    "icon": "nikya_nukismartlock.png"
+                },
+                {
+                    "value": "255",
+                    "description": "Erreur",
+                    "icon": "nikya_nukismartlock.png"
+                }
+            ]
         }
     ]
 }
