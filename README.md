@@ -149,8 +149,8 @@ Inutile de l'appeler manuellement, mais un appel permet de savoir si l'ensemble 
 
 #### Pour _periph value batterycritical_
 
-* 0 : Batterie non faible
-* 100 : Batterie faible
+* Unité : %
+* Charge restante batterie
 
 #### Pour _periph value state_
 
@@ -166,3 +166,16 @@ ID  | Name
 7   | unlatching
 254 | motor blocked
 255 | undefined
+
+#### Pour _periph value doorstate_
+
+ID  | Name
+----|-----------------------
+1   | deactivated
+2   | door closed
+3   | door opened
+4   | door state unknown
+5   | calibrating
+16  | uncalibrated
+240 | removed
+255 | unknown
