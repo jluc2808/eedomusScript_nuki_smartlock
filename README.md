@@ -86,7 +86,7 @@ Abonner la box eedomus en tant que _Callback_ souhaitant être informé des chan
 	- periph_id_lockaction : **codeAPI** eedomus du périphérique qui contiendra l'information _ACTION de la serrure
 * Résultat
 	- (XML) Une confirmation ou non du succès de la fonction
-* Exemple : https://192.168.1.60/script/?exec=nukismartlock.php&function=register&eedomushost=192.168.1.60&nukiid=111&periph_id_state=222&periph_id_batterycritical=333&periph_id_doorstate=444&periph_id_batterycritical=333&periph_id_lockaction=555
+* Exemple : https://192.168.1.60/script/?exec=nukismartlock.php&function=register&eedomushost=192.168.1.60&nukiid=111&periph_id_state=222&periph_id_batterycritical=333&periph_id_doorstate=444&periph_id_lockaction=555
 
 #### Fonction _add_periph_registration_
 
@@ -149,8 +149,8 @@ Inutile de l'appeler manuellement, mais un appel permet de savoir si l'ensemble 
 
 #### Pour _periph value batterycritical_
 
-* 0 : Batterie non faible
-* 100 : Batterie faible
+* Unité : %
+* Charge restante batterie
 
 #### Pour _periph value state_
 
@@ -166,3 +166,16 @@ ID  | Name
 7   | unlatching
 254 | motor blocked
 255 | undefined
+
+#### Pour _periph value doorstate_
+
+ID  | Name
+----|-----------------------
+1   | deactivated
+2   | door closed
+3   | door opened
+4   | door state unknown
+5   | calibrating
+16  | uncalibrated
+240 | removed
+255 | unknown
