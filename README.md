@@ -86,7 +86,7 @@ Abonner la box eedomus en tant que _Callback_ souhaitant être informé des chan
 	- periph_id_lockaction : **codeAPI** eedomus du périphérique qui contiendra l'information _ACTION de la serrure
 * Résultat
 	- (XML) Une confirmation ou non du succès de la fonction
-* Exemple : https://192.168.1.60/script/?exec=nukismartlock.php&function=register&eedomushost=192.168.1.60&nukiid=111&periph_id_state=222&periph_id_batterycritical=333&periph_id_doorstate=444&periph_id_batterycritical=333&periph_id_lockaction=555
+* Exemple : https://192.168.1.60/script/?exec=nukismartlock.php&function=register&eedomushost=192.168.1.60&nukiid=111&periph_id_state=222&periph_id_batterycritical=333&periph_id_doorstate=444&periph_id_lockaction=555
 
 #### Fonction _add_periph_registration_
 
